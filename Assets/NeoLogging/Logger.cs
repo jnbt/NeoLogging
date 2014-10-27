@@ -31,7 +31,7 @@ namespace Neo.Logging{
     /// <summary>
     /// The global logging level for all instances of the logger.
     /// </summary>
-    public Level LogLevel = Level.WARN;
+    public static Level LogLevel = Level.WARN;
 
     /// <summary>
     /// The current name of logger. Will be prefixed.
