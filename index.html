@@ -74,20 +74,20 @@ can be included into your project.</p>
 
 <p>Set the logging level for all instances of a logger:</p>
 
-<pre><code>Neo.Logging.Logger.LogLevel = Neo.Logging.Level.WARN;
+<div class="highlight highlight-csharp"><pre><span class="n">Neo</span><span class="p">.</span><span class="n">Logging</span><span class="p">.</span><span class="n">Logger</span><span class="p">.</span><span class="n">LogLevel</span> <span class="p">=</span> <span class="n">Neo</span><span class="p">.</span><span class="n">Logging</span><span class="p">.</span><span class="n">Level</span><span class="p">.</span><span class="n">WARN</span><span class="p">;</span>
 
-</code></pre>
+</pre></div>
 
 <p>Using instances of the <code>Logger</code> class you can log by sending parameters or a callback which will <em>only</em> be called if the logging level matches:</p>
 
-<pre><code>using Neo.Logging;
+<div class="highlight highlight-csharp"><pre><span class="k">using</span> <span class="nn">Neo.Logging</span><span class="p">;</span>
 
-var logger = new Logger("MyClass");
+<span class="kt">var</span> <span class="n">logger</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Logger</span><span class="p">(</span><span class="s">"MyClass"</span><span class="p">);</span>
 
-logger.Log("This will be logged:", 12f); // =&gt; [MyClass] This will be logged: 12.0
+<span class="n">logger</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">"This will be logged:"</span><span class="p">,</span> <span class="m">12f</span><span class="p">);</span> <span class="c1">// =&gt; [MyClass] This will be logged: 12.0</span>
 
-logger.Warn(() =&gt; "This will only be called if needed"); // =&gt; This will only be called if needed
-</code></pre>
+<span class="n">logger</span><span class="p">.</span><span class="n">Warn</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="s">"This will only be called if needed"</span><span class="p">);</span> <span class="c1">// =&gt; This will only be called if needed</span>
+</pre></div>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/jnbt">jnbt</a></p>
