@@ -30,14 +30,14 @@ can be included into your project.
 
 Set the logging level for all instances of a logger:
 
-```
+```csharp
 Neo.Logging.Logger.LogLevel = Neo.Logging.Level.WARN;
 
 ```
 
 Using instances of the `Logger` class you can log by sending parameters or a callback which will *only* be called if the logging level matches:
 
-```
+```csharp
 using Neo.Logging;
 
 var logger = new Logger("MyClass");
