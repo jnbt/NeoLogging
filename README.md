@@ -24,7 +24,7 @@ can be included into your project.
 
 ## Dependencies
 
-* [NeoCollections](https://github.com/jnbt/NeoCollections)
+None
 
 ## Usage
 
