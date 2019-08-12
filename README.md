@@ -4,27 +4,29 @@ NeoLogging is a very simple library for logging using the build-in UnityEngine.D
 
 ## Installation
 
-If you don't have access to [Microsoft VisualStudio](http://msdn.microsoft.com/de-de/vstudio) you can just use Unity3D and its compiler.
-Or use your VisualStudio installation in combination with [Visual Studio Tools for Unity](http://unityvs.com) to compile a DLL-file, which
-can be included into your project.
+You can either use to copy the source files of this project into your Unity3D project or use Visual Studio to compile a DLL-file to be included in your project.
 
 ### Using Unity3D
 
 * Clone the repository
-* Copy the files from `Assets\NeoLogging` into your project
+* Copy the files from `Assets\NeoCollections` into your project
+  * This folder also includes an Assembly definition file
 
 ### Using VisualStudio
 
 * Clone the repository
 * Open the folder as a Unity3D project
-* Install the *free* [Visual Studio Tools for Unity](http://unityvs.com) and import its Unity-package
-* Open `UnityVS.NeoLogging.sln`
-* [Build a DLL-File](http://forum.unity3d.com/threads/video-tutorial-how-to-use-visual-studio-for-all-your-unity-development.120327)
-* Import the DLL and dependencies into your Unity3D project
+* Build the solution using "Build -> Build NeoLogging"
+* Import the DLL (`obj/Release/NeoLogging.dll`) into your Unity3D project
+
+Hint: Unity currently always reset the LangVersion to "7.3" which isn't supported by Visual Studio. Therefor you need to manually
+set / revert the `LangVersion` to `6` in `NeoLogging.csproj`:
+
+    <LangVersion>6</LangVersion>
 
 ## Dependencies
 
-* [NeoCollections](https://github.com/jnbt/NeoCollections)
+None
 
 ## Usage
 

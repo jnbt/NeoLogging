@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using UnityEngine;
 
-namespace Neo.Logging{
+namespace Neo.Logging {
   ///<summary>
   /// This is only a logger which bases on Unity's Debug.Log
   /// One might use another output in later versions.
@@ -36,31 +36,29 @@ namespace Neo.Logging{
     /// <summary>
     /// The current name of logger. Will be prefixed.
     /// </summary>
-    public string Name{get; private set;}
-    private readonly bool logging;
+    public string Name { get; private set; }
 
     /// <summary>
     /// Create a new instance and sets it's name
     /// </summary>
     /// <param name="name">of the logger, will be prefixed</param>
-    public Logger(string name){
-      this.Name = name;
-      logging   = Application.isPlaying;
+    public Logger(string name) {
+      Name = name;
     }
 
     /// <summary>
     /// Logs the arguments
     /// </summary>
     /// <param name="what">to log</param>
-    public void Log(params object[] what){
-     Out(Level.LOG, what);
+    public void Log(params object[] what) {
+      Out(Level.LOG, what);
     }
 
     /// <summary>
     /// Logs the result of the lazy function
     /// </summary>
     /// <param name="lazy">to log</param>
-    public void Log(Func<string> lazy){
+    public void Log(Func<string> lazy) {
       Out(Level.LOG, lazy);
     }
 
@@ -68,7 +66,7 @@ namespace Neo.Logging{
     /// Logs what as warning
     /// </summary>
     /// <param name="what">to log</param>
-    public void Warn(params object[] what){
+    public void Warn(params object[] what) {
       Out(Level.WARN, what);
     }
 
@@ -76,7 +74,7 @@ namespace Neo.Logging{
     /// Logs the result of the lazy function as warning
     /// </summary>
     /// <param name="lazy">to log</param>
-    public void Warn(Func<string> lazy){
+    public void Warn(Func<string> lazy) {
       Out(Level.WARN, lazy);
     }
 
@@ -84,7 +82,7 @@ namespace Neo.Logging{
     /// Logs what as error
     /// </summary>
     /// <param name="what">to log</param>
-    public void Error(params object[] what){
+    public void Error(params object[] what) {
       Out(Level.ERROR, what);
     }
 
@@ -92,7 +90,7 @@ namespace Neo.Logging{
     /// Logs the result of the lazy function as error
     /// </summary>
     /// <param name="lazy">to log</param>
-    public void Error(Func<string> lazy){
+    public void Error(Func<string> lazy) {
       Out(Level.ERROR, lazy);
     }
 
@@ -100,30 +98,34 @@ namespace Neo.Logging{
     /// Logs an exception. This stops the execution!
     /// </summary>
     /// <param name="e">to log</param>
-    public void Exception(Exception e){
+    public void Exception(Exception e) {
       Debug.LogException(e);
     }
 
-    private void Out(Level level, params object[] what){
-      if(logging && (level >= LogLevel)) {
+    private void Out(Level level, params object[] what) {
+      if (Application.isPlaying && level >= LogLevel) {
         StringBuilder sb = new StringBuilder("[").Append(Name).Append("] ");
-        what.ForEach((o) => {
-          if(o != null) sb.Append(o.ToString()).Append(" ");
-          else sb.Append("null ");
-        });
+        for (int i = 0, imax = what.Length; i < imax; i++) {
+          object o = what[i];
+          if (o != null) {
+            sb.Append(o.ToString()).Append(" ");
+          } else {
+            sb.Append("null ");
+          }
+        }
         print(level, sb.ToString());
       }
     }
 
-    private void Out(Level level, Func<string> what){
-      if(logging && (level >= LogLevel)) {
+    private void Out(Level level, Func<string> what) {
+      if (Application.isPlaying && (level >= LogLevel)) {
         StringBuilder sb = new StringBuilder("[").Append(Name).Append("] ").Append(what());
         print(level, sb.ToString());
       }
     }
 
-    private void print(Level level, string output){
-      switch(level){
+    private void print(Level level, string output) {
+      switch (level) {
         case Level.WARN:
           Debug.LogWarning(output);
           break;
